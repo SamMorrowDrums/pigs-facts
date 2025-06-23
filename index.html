@@ -3,30 +3,231 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pig Facts</title>
+    <title>CYBER SWINE DATA ARCHIVE</title>
     <style>
-        body { font-family: Arial, sans-serif; background: #fffbe7; color: #333; margin: 0; padding: 0; }
-        .container { max-width: 600px; margin: 40px auto; background: #fff; border-radius: 10px; box-shadow: 0 2px 8px #e0c9a6; padding: 32px; }
-        h1 { color: #d17c4a; }
-        ul { line-height: 1.7; }
-        .pig-emoji { font-size: 2.5rem; }
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap');
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        body { 
+            font-family: 'Share Tech Mono', monospace; 
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0a1a 50%, #0a1a1a 100%); 
+            color: #00ff88; 
+            margin: 0; 
+            padding: 0; 
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* Cyberpunk background effects */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0, 255, 136, 0.03) 2px,
+                    rgba(0, 255, 136, 0.03) 4px
+                );
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        /* Scan line animation */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #ff00ff, transparent);
+            animation: scanline 2s linear infinite;
+            z-index: 2;
+            pointer-events: none;
+        }
+        
+        @keyframes scanline {
+            0% { transform: translateY(-100vh); }
+            100% { transform: translateY(100vh); }
+        }
+        
+        .container { 
+            max-width: 700px; 
+            margin: 40px auto; 
+            background: rgba(20, 20, 30, 0.9); 
+            border: 2px solid #00ff88; 
+            border-radius: 0; 
+            box-shadow: 
+                0 0 20px #00ff88,
+                inset 0 0 20px rgba(0, 255, 136, 0.1);
+            padding: 32px; 
+            position: relative;
+            z-index: 3;
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ff00ff, #00ff88, #ff00ff);
+            z-index: -1;
+            animation: borderGlow 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes borderGlow {
+            0% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        
+        h1 { 
+            font-family: 'Orbitron', monospace;
+            color: #ff00ff; 
+            text-shadow: 
+                0 0 10px #ff00ff,
+                0 0 20px #ff00ff,
+                0 0 30px #ff00ff;
+            font-weight: 900;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            animation: glitch 4s infinite;
+        }
+        
+        @keyframes glitch {
+            0%, 98% { transform: translateX(0); }
+            99% { transform: translateX(2px); }
+            100% { transform: translateX(-2px); }
+        }
+        
+        ul { 
+            line-height: 1.8; 
+            list-style: none;
+            padding: 0;
+        }
+        
+        li {
+            margin: 1rem 0;
+            padding: 0.8rem;
+            background: rgba(0, 255, 136, 0.05);
+            border-left: 3px solid #00ff88;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        li:hover {
+            background: rgba(0, 255, 136, 0.1);
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
+            transform: translateX(5px);
+        }
+        
+        li::before {
+            content: '> ';
+            color: #ff00ff;
+            font-weight: bold;
+        }
+        
+        .pig-emoji { 
+            font-size: 4rem; 
+            text-align: center;
+            margin-bottom: 1rem;
+            filter: hue-rotate(180deg) contrast(1.5);
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .footer-text {
+            margin-top: 2em; 
+            color: #ff00ff;
+            text-align: center;
+            font-family: 'Orbitron', monospace;
+            text-shadow: 0 0 10px #ff00ff;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+        
+        /* Glitch effect for title */
+        .glitch {
+            position: relative;
+        }
+        
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .glitch::before {
+            animation: glitch-before 0.3s infinite;
+            color: #ff00ff;
+            z-index: -1;
+        }
+        
+        .glitch::after {
+            animation: glitch-after 0.3s infinite;
+            color: #00ffff;
+            z-index: -2;
+        }
+        
+        @keyframes glitch-before {
+            0%, 15%, 21%, 30%, 36%, 40%, 50%, 58%, 65%, 72%, 80%, 90%, 96%, 100% {
+                transform: translate(0);
+            }
+            20% { transform: translate(-2px, 2px); }
+            25% { transform: translate(2px, -2px); }
+            35% { transform: translate(-1px, 1px); }
+            45% { transform: translate(1px, -1px); }
+        }
+        
+        @keyframes glitch-after {
+            0%, 12%, 18%, 25%, 33%, 41%, 47%, 53%, 61%, 68%, 75%, 83%, 91%, 97%, 100% {
+                transform: translate(0);
+            }
+            15% { transform: translate(2px, -2px); }
+            22% { transform: translate(-2px, 2px); }
+            30% { transform: translate(1px, -1px); }
+            38% { transform: translate(-1px, 1px); }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="pig-emoji">🐖</div>
-        <h1>Fun Pig Facts</h1>
+        <div class="pig-emoji">🤖🐖</div>
+        <h1 class="glitch" data-text="CYBER SWINE ARCHIVES">CYBER SWINE ARCHIVES</h1>
         <ul>
-            <li>Pigs are highly intelligent animals and can learn tricks faster than dogs.</li>
-            <li>Pigs have an excellent sense of smell and are used to find truffles in Europe.</li>
-            <li>Despite the saying, pigs are actually very clean animals.</li>
-            <li>Pigs communicate with each other using grunts and squeals.</li>
-            <li>There are over 500 different breeds of pigs worldwide.</li>
-            <li>Baby pigs are called piglets, and a group of piglets is called a litter.</li>
-            <li>Pigs can run at speeds of up to 11 miles per hour.</li>
-            <li>Pigs' snouts are very sensitive and are used for rooting in the ground for food.</li>
+            <li>Neural-enhanced porcines demonstrate superior cognitive processing capabilities exceeding canine baseline parameters.</li>
+            <li>Bio-sensors detect subterranean fungi with 99.7% accuracy using advanced olfactory matrix systems.</li>
+            <li>Contrary to legacy data, swine entities maintain optimal hygiene protocols in sterile environments.</li>
+            <li>Inter-specimen communication utilizes complex analog audio frequency modulation patterns.</li>
+            <li>Database contains 500+ registered genetic variants across global breeding facilities.</li>
+            <li>Juvenile units (designation: piglets) operate in synchronized cluster formations (litter protocol).</li>
+            <li>Maximum velocity readings indicate 17.7 km/h burst capacity during emergency protocols.</li>
+            <li>Sensory appendage equipped with multi-spectrum detection array for resource acquisition operations.</li>
         </ul>
-        <p style="margin-top:2em; color:#bfa16b;">Oink oink! 🐷</p>
+        <p class="footer-text">SYSTEM ONLINE // DATA STREAM ACTIVE 🤖</p>
     </div>
 </body>
 </html>
