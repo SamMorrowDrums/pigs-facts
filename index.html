@@ -3,30 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pig Facts</title>
+    <title>Galactic Pig Facts - Space Opera Edition</title>
     <style>
-        body { font-family: Arial, sans-serif; background: #fffbe7; color: #333; margin: 0; padding: 0; }
-        .container { max-width: 600px; margin: 40px auto; background: #fff; border-radius: 10px; box-shadow: 0 2px 8px #e0c9a6; padding: 32px; }
-        h1 { color: #d17c4a; }
-        ul { line-height: 1.7; }
-        .pig-emoji { font-size: 2.5rem; }
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        body { 
+            font-family: 'Orbitron', monospace; 
+            background: #0a0a0a; 
+            color: #e0e0e0; 
+            margin: 0; 
+            padding: 0; 
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* Animated starfield background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(2px 2px at 20px 30px, #fff, transparent),
+                radial-gradient(2px 2px at 40px 70px, #ff00ff, transparent),
+                radial-gradient(1px 1px at 90px 40px, #00ffff, transparent),
+                radial-gradient(1px 1px at 130px 80px, #fff, transparent),
+                radial-gradient(2px 2px at 160px 30px, #ffff00, transparent);
+            background-repeat: repeat;
+            background-size: 200px 100px;
+            animation: sparkle 20s linear infinite;
+            z-index: -1;
+        }
+        
+        @keyframes sparkle {
+            from { transform: translateY(0px); }
+            to { transform: translateY(-100px); }
+        }
+        
+        .container { 
+            max-width: 700px; 
+            margin: 40px auto; 
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f0f23 100%); 
+            border-radius: 20px; 
+            box-shadow: 
+                0 0 30px rgba(0, 255, 255, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                0 10px 30px rgba(0, 0, 0, 0.5); 
+            padding: 40px;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            position: relative;
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ff00ff, #00ffff, #ffff00, #ff00ff);
+            border-radius: 22px;
+            z-index: -1;
+            animation: borderGlow 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes borderGlow {
+            0% { opacity: 0.5; }
+            100% { opacity: 0.8; }
+        }
+        
+        h1 { 
+            color: #00ffff; 
+            font-weight: 900;
+            font-size: 2.5rem;
+            text-align: center;
+            text-shadow: 
+                0 0 10px #00ffff,
+                0 0 20px #00ffff,
+                0 0 30px #00ffff;
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+        }
+        
+        ul { 
+            line-height: 1.8; 
+            font-size: 1.1rem;
+            padding-left: 0;
+        }
+        
+        li {
+            list-style: none;
+            padding: 15px 20px;
+            margin: 10px 0;
+            background: linear-gradient(90deg, rgba(255, 0, 255, 0.1), rgba(0, 255, 255, 0.1));
+            border-left: 3px solid #ff00ff;
+            border-radius: 8px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        li:hover {
+            background: linear-gradient(90deg, rgba(255, 0, 255, 0.2), rgba(0, 255, 255, 0.2));
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(255, 0, 255, 0.3);
+        }
+        
+        li::before {
+            content: '◆';
+            color: #ffff00;
+            font-weight: bold;
+            position: absolute;
+            left: -8px;
+            top: 50%;
+            transform: translateY(-50%);
+            text-shadow: 0 0 5px #ffff00;
+        }
+        
+        .spaceship-emoji { 
+            font-size: 3rem; 
+            text-align: center;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="pig-emoji">🐖</div>
-        <h1>Fun Pig Facts</h1>
+        <div class="spaceship-emoji">🚀</div>
+        <h1>GALACTIC PIG EXPEDITIONS</h1>
         <ul>
-            <li>Pigs are highly intelligent animals and can learn tricks faster than dogs.</li>
-            <li>Pigs have an excellent sense of smell and are used to find truffles in Europe.</li>
-            <li>Despite the saying, pigs are actually very clean animals.</li>
-            <li>Pigs communicate with each other using grunts and squeals.</li>
-            <li>There are over 500 different breeds of pigs worldwide.</li>
-            <li>Baby pigs are called piglets, and a group of piglets is called a litter.</li>
-            <li>Pigs can run at speeds of up to 11 miles per hour.</li>
-            <li>Pigs' snouts are very sensitive and are used for rooting in the ground for food.</li>
+            <li>Across the galaxy, space pigs demonstrate superior intelligence, mastering hyperspace navigation faster than any robotic AI system.</li>
+            <li>The legendary Truffle Miners of Europa use their enhanced olfactory sensors to detect rare spice deposits in asteroid fields.</li>
+            <li>Despite cosmic folklore, intergalactic pigs maintain pristine bio-domes aboard their starships, defying all stereotypes.</li>
+            <li>Space pig fleets communicate through quantum-encrypted sonic frequencies that can penetrate nebula interference.</li>
+            <li>The Pig Federation spans over 500 star systems, each colony adapting to unique planetary conditions.</li>
+            <li>Young space cadets, known as "piglets," train in zero-gravity combat formations called "stellar litters."</li>
+            <li>Battle-hardened war pigs can achieve warp speeds of up to 11 parsecs per standard time unit during emergency maneuvers.</li>
+            <li>Their bio-enhanced snouts serve as sophisticated scanning arrays, capable of detecting life signs through hull plating.</li>
         </ul>
-        <p style="margin-top:2em; color:#bfa16b;">Oink oink! 🐷</p>
+        <p style="margin-top:2em; color:#ff00ff; text-align: center; font-weight: bold; text-shadow: 0 0 10px #ff00ff;">May the snorts be with you! 🐷✨</p>
     </div>
 </body>
 </html>
