@@ -19,6 +19,7 @@
             padding: 0;
             min-height: 100vh;
             position: relative;
+            cursor: default;
         }
         
         body::before {
@@ -165,6 +166,42 @@
         .center-emoji {
             text-align: center;
             margin-bottom: 2rem;
+        }
+        
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px;
+                padding: 32px 24px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .pig-emoji {
+                font-size: 3rem;
+            }
+            
+            li {
+                font-size: 1rem;
+                padding-left: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                margin: 10px;
+                padding: 24px 16px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .pig-emoji {
+                font-size: 2.5rem;
+            }
         }
     </style>
 </head>
