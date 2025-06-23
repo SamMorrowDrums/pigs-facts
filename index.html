@@ -3,30 +3,225 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pig Facts</title>
+    <title>Enchanted Pig Lore</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
     <style>
-        body { font-family: Arial, sans-serif; background: #fffbe7; color: #333; margin: 0; padding: 0; }
-        .container { max-width: 600px; margin: 40px auto; background: #fff; border-radius: 10px; box-shadow: 0 2px 8px #e0c9a6; padding: 32px; }
-        h1 { color: #d17c4a; }
-        ul { line-height: 1.7; }
-        .pig-emoji { font-size: 2.5rem; }
+        * {
+            box-sizing: border-box;
+        }
+        
+        body { 
+            font-family: 'Lora', serif; 
+            background: linear-gradient(135deg, #1a3d1a 0%, #2d5016 25%, #4a7c3c 50%, #2d5016 75%, #1a3d1a 100%);
+            background-attachment: fixed;
+            color: #f0f6fc; 
+            margin: 0; 
+            padding: 0;
+            min-height: 100vh;
+            position: relative;
+            cursor: default;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(76, 158, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 60%, rgba(201, 209, 217, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .container { 
+            max-width: 650px; 
+            margin: 60px auto; 
+            background: rgba(45, 80, 22, 0.3);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 215, 0, 0.2);
+            border-radius: 25px; 
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 215, 0, 0.1),
+                0 0 40px rgba(255, 215, 0, 0.1);
+            padding: 48px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, 
+                transparent, 
+                rgba(255, 215, 0, 0.3), 
+                transparent, 
+                rgba(76, 158, 255, 0.3), 
+                transparent);
+            border-radius: 27px;
+            z-index: -1;
+            animation: borderGlow 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes borderGlow {
+            0% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        
+        h1 { 
+            font-family: 'Cinzel', serif;
+            color: #ffd700; 
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            text-shadow: 
+                0 0 10px rgba(255, 215, 0, 0.5),
+                0 0 20px rgba(255, 215, 0, 0.3),
+                0 0 30px rgba(255, 215, 0, 0.1);
+            font-weight: 600;
+        }
+        
+        ul { 
+            line-height: 1.8; 
+            padding-left: 0;
+            list-style: none;
+        }
+        
+        li {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 1rem;
+            color: #c9d1d9;
+            font-size: 1.1rem;
+        }
+        
+        li::before {
+            content: '🌿';
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 1.2rem;
+            animation: sparkle 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes sparkle {
+            0% { transform: scale(1) rotate(0deg); }
+            100% { transform: scale(1.1) rotate(5deg); }
+        }
+        
+        .pig-emoji { 
+            font-size: 3.5rem; 
+            text-align: center;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .pig-emoji::before {
+            content: '✨';
+            position: absolute;
+            top: -10px;
+            left: -20px;
+            font-size: 1.5rem;
+            animation: twinkle 1.5s ease-in-out infinite;
+        }
+        
+        .pig-emoji::after {
+            content: '✨';
+            position: absolute;
+            bottom: -10px;
+            right: -20px;
+            font-size: 1.5rem;
+            animation: twinkle 1.5s ease-in-out infinite 0.5s;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+        
+        .magical-footer {
+            margin-top: 3rem; 
+            color: #b8860b;
+            text-align: center;
+            font-style: italic;
+            font-size: 1.2rem;
+            text-shadow: 0 0 10px rgba(184, 134, 11, 0.3);
+        }
+        
+        .center-emoji {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px;
+                padding: 32px 24px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .pig-emoji {
+                font-size: 3rem;
+            }
+            
+            li {
+                font-size: 1rem;
+                padding-left: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                margin: 10px;
+                padding: 24px 16px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .pig-emoji {
+                font-size: 2.5rem;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="pig-emoji">🐖</div>
-        <h1>Fun Pig Facts</h1>
+        <div class="center-emoji">
+            <div class="pig-emoji">🐖</div>
+        </div>
+        <h1>Enchanted Pig Lore</h1>
         <ul>
-            <li>Pigs are highly intelligent animals and can learn tricks faster than dogs.</li>
-            <li>Pigs have an excellent sense of smell and are used to find truffles in Europe.</li>
-            <li>Despite the saying, pigs are actually very clean animals.</li>
-            <li>Pigs communicate with each other using grunts and squeals.</li>
-            <li>There are over 500 different breeds of pigs worldwide.</li>
-            <li>Baby pigs are called piglets, and a group of piglets is called a litter.</li>
-            <li>Pigs can run at speeds of up to 11 miles per hour.</li>
-            <li>Pigs' snouts are very sensitive and are used for rooting in the ground for food.</li>
+            <li>These mystical creatures possess wisdom beyond their realm, mastering arts faster than the loyal hounds of the forest.</li>
+            <li>Blessed with keen senses, they are the chosen seekers of the precious earth-treasures known as truffles throughout the ancient lands.</li>
+            <li>Contrary to mortal tales, these noble beings maintain the purest of sanctuaries in their woodland domains.</li>
+            <li>They speak in the ancient tongue of grunts and melodic squeals, sharing secrets of the earth.</li>
+            <li>Across the mystical realms, over five hundred distinct lineages of these magical beings flourish.</li>
+            <li>Their offspring, known as piglets, gather in sacred circles called litters under the moonlight.</li>
+            <li>Swift as woodland sprites, they can traverse the forest paths at speeds reaching eleven miles per hour.</li>
+            <li>Their enchanted snouts serve as conduits to the earth's hidden bounty, sensing treasures buried deep within.</li>
         </ul>
-        <p style="margin-top:2em; color:#bfa16b;">Oink oink! 🐷</p>
+        <p class="magical-footer">By starlight and forest magic... 🌟🐷✨</p>
     </div>
 </body>
 </html>
